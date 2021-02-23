@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  mylitemall:
+    build:
+      context: litemall
+      dockerfile: Dockerfile
+    container_name: litemall
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./litemall/storage:/storage
+      - ./litemall/logs:/logs
+      - ./litemall/backup:/backup
+      - /etc/localtime:/etc/localtime
+      - ./litemall/application.yml:/app/application.yml
+    environment:
+      - TZ=Asia/Shanghai
+    # restart: always
